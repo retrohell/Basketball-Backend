@@ -1,0 +1,6 @@
+{
+    "secret":{
+        "key":"A3FDA1BE96A1AEB61D0C84C742B54EC0BF261CF9397C431959A356C876B62161"
+    },
+    "dbChain":"mongodb://localhost/DBbasket"
+}
