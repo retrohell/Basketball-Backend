@@ -1,7 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const async = require('async');
-const Menu = require('../models/menu');
+const Menu = require('../models/index');
 
 // RESTFULL => GET, POST, PUT, PATCH, DELETE
 // Modelo = Una representacion de datos, que representa una entidad del mundo real

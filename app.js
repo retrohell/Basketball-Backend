@@ -1,5 +1,4 @@
-const express = require('express')
-const app = express()
+const express = require('express');
 const path = require('path');
 const axios = require('axios');
 const mongoose = require('mongoose');
@@ -22,7 +21,7 @@ const statsRouter = require('./routes/stats');
 const uri = config.get("dbChain");
 mongoose.connect(uri);
 const db = mongoose.connection;
-
+const app = express();
 // mongodb
 db.on('error', () => {
   console.log("Can't connect to database.");
@@ -44,8 +43,8 @@ i18n.configure({
 //})
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+//app.set('views', path.join(__dirname, 'views'));
+//app.set('view engine', 'jade');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -54,20 +53,20 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public'))); // static resources
 app.use(i18n.init);
 
-
 app.use(expressJwt({secret:jwtKey, algorithms:['HS256']}).unless({
   path:[
-    "/login", "/", "/signUp", "/index"
+    "/login", "/", "/signup"
   ]
 }));
 
 app.use('/users', usersRouter);
-app.use('/', indexRouter);
-app.use('/signUp', signUpRouter);
+//app.use('/signup', signUpRouter);
 app.use('/login', loginRouter);
 app.use('/news', newsRouter);
 app.use('/plays', playsRouter);
 app.use('/stats', statsRouter);
+app.use('/', indexRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
