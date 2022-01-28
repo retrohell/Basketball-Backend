@@ -1,0 +1,17 @@
+{
+  "ok": "Action succesful",
+	"bad": "There was an error",
+
+  "users.list.ok": "Se obtuvieron los users éxitosamente",
+  "users.list.bad": "No se pudieron obtener los users",
+  "users.created.ok": "Se creó user éxitosamente",
+  "users.created.bad": "Hubo un error al crear user, no se pudo crear",
+  "users.index.ok": "Se obtuvo el user éxitosamente",
+  "users.index.bad": "Hubo un error al intentar obtener el user",
+  "users.replaced.ok": "Se reemplazó el user éxitosamente",
+  "users.replaced.bad": "Hubo un error al reemplazar el user",
+  "users.edited.ok": "User editado éxitosamente",
+  "users.edited.bad": "Hubo un error al editar el user",
+  "users.destroyed.ok": "User eliminado éxitosamente",
+  "users.destroyed.bad": "Hubo un error al eliminar el user"
+}

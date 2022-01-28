@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "nodemon ./bin/www"
   },
   "author": "Raul Pineda & Daniel Campos",
   "license": "ISC",
@@ -14,9 +14,13 @@
     "axios": "^0.25.0",
     "bcrypt": "^5.0.1",
     "config": "^3.3.7",
+    "cookie-parser": "^1.4.6",
     "express": "^4.17.2",
+    "express-jwt": "^6.1.0",
+    "i18n": "^0.14.0",
     "mongoose": "^6.1.8",
     "mongoose-paginate-v2": "^1.5.0",
+    "morgan": "^1.10.0",
     "nodemon": "^2.0.15"
   }
 }
