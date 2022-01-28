@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-const port = 3000
 const path = require('path');
 const axios = require('axios');
 const mongoose = require('mongoose');
@@ -14,6 +13,11 @@ const logger = require('morgan');
 
 const usersRouter  = require('./routes/users');
 const indexRouter = require('./routes/index');
+const signUpRouter = require('./routes/signUp');
+const loginRouter = require('./routes/login');
+const newsRouter = require('./routes/news');
+const playsRouter = require('./routes/plays');
+const statsRouter = require('./routes/stats');
 
 const uri = config.get("dbChain");
 mongoose.connect(uri);
@@ -53,12 +57,17 @@ app.use(i18n.init);
 
 app.use(expressJwt({secret:jwtKey, algorithms:['HS256']}).unless({
   path:[
-    "/login",
+    "/login", "/", "/signUp", "/index"
   ]
 }));
 
 app.use('/users', usersRouter);
 app.use('/', indexRouter);
+app.use('/signUp', signUpRouter);
+app.use('/login', loginRouter);
+app.use('/news', newsRouter);
+app.use('/plays', playsRouter);
+app.use('/stats', statsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

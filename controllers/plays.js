@@ -1,28 +1,28 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const async = require('async');
-const Menu = require('../models/menu');
+const Plays = require('../models/plays');
 
 // RESTFULL => GET, POST, PUT, PATCH, DELETE
 // Modelo = Una representacion de datos, que representa una entidad del mundo real
 function list(req, res, next) {
     let page = req.params.page ? req.params.page : 1;
-    Menu.paginate({},{page:page, limit:3}).then(objs => res.status(200).json({
-        message: res.__('ok.menuList'),
+    Plays.paginate({},{page:page, limit:3}).then(objs => res.status(200).json({
+        message: res.__('ok.playsList'),
         obj: objs
     })).catch(ex => res.status(500).json({
-        message: res.__('bad.menuList'),
+        message: res.__('bad.playsList'),
         obj: ex
     }));
 }
 
 function index(req, res, next) {
     const id= req.params.id;
-    Menu.findOne({"_id":id}).then(obj => res.status(200).json({
-        message: res.__('ok.menuIndex'),
+    Plays.findOne({"_id":id}).then(obj => res.status(200).json({
+        message: res.__('ok.playsIndex'),
         oj: obj
     })).catch(ex => res.status(500).json({
-        message: res.__('bad.menuIndex'),
+        message: res.__('bad.playsIndex'),
         obj: ex
     }));
 }
@@ -37,16 +37,16 @@ function create(req, res, next) {
         }
     }, (err, result) => {
         bcrypt.hash(password, result.salt, (err, hash)=>{
-            let menu = new Menu({
+            let play = new Plays({
                 _date:date,
                 _name:name,
             });
 
-            menu.save().then(obj => res.status(200).json({
-                message: res.__('ok.menuCreate'),
+            play.save().then(obj => res.status(200).json({
+                message: res.__('ok.playsCreate'),
                 obj: obj
             })).catch(ex => res.status(500).json({
-                message: res.__('bad.menuCreate'),
+                message: res.__('bad.playsCreate'),
                 obj:ex
             }));
         })
@@ -60,16 +60,16 @@ function replace(req, res, next) {
     const date = req.body.date ? req.body.date: "";
     const name = req.body.name ? req.body.name: "";
 
-    let menu = new Object({
+    let plays = new Object({
         _date:date,
         _name:name,
     });
 
-    Menu.findOneAndUpdate({"_id":id}, menu).then(obj => res.status(200).json({
-        message: res.__('ok.menuReplace'),
+    Plays.findOneAndUpdate({"_id":id}, plays).then(obj => res.status(200).json({
+        message: res.__('ok.playsReplace'),
         oj: obj
     })).catch(ex => res.status(500).json({
-        message: res.__('bad.menuReplace'),
+        message: res.__('bad.playsReplace'),
         obj: ex
     }));
 }
@@ -78,32 +78,32 @@ function edit(req, res, next) {
     const date = req.body.date;
     const name = req.body.name;
 
-    let menu = new Object();
+    let plays = new Object();
 
     if(date){
-        menu._date = date;
+        plays._date = date;
     }
 
     if(name){
-        menu._name = name;
+        plays._name = name;
     }
 
-    Menu.findOneAndUpdate({"_id":id}, menu).then(obj => res.status(200).json({
-        message: res.__('ok.menuEdit'),
+    Plays.findOneAndUpdate({"_id":id}, plays).then(obj => res.status(200).json({
+        message: res.__('ok.playsEdit'),
         oj: obj
     })).catch(ex => res.status(500).json({
-        message: res.__('bad.menuEdit'),
+        message: res.__('bad.playsEdit'),
         obj: ex
     }));
 }
 
 function destroy(req, res, next) {
     const id = req.params.id;
-    Menu.remove({"_id":id}).then(obj => res.status(200).json({
-        message: res.__('ok.menuDestroy'),
+    Plays.remove({"_id":id}).then(obj => res.status(200).json({
+        message: res.__('ok.playsDestroy'),
         oj: obj
     })).catch(ex => res.status(500).json({
-        message: res.__('bad.menuDestroy'),
+        message: res.__('bad.playsDestroy'),
         obj: ex
     }));
 }
