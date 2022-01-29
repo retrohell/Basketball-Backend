@@ -43,8 +43,8 @@ i18n.configure({
 //})
 
 // view engine setup
-//app.set('views', path.join(__dirname, 'views'));
-//app.set('view engine', 'jade');
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -59,14 +59,13 @@ app.use(expressJwt({secret:jwtKey, algorithms:['HS256']}).unless({
   ]
 }));
 
+app.use('/', indexRouter);
 app.use('/users', usersRouter);
 //app.use('/signup', signUpRouter);
 app.use('/login', loginRouter);
 app.use('/news', newsRouter);
 app.use('/plays', playsRouter);
 app.use('/stats', statsRouter);
-app.use('/', indexRouter);
-
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
