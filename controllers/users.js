@@ -9,10 +9,10 @@ const User = require('../models/user');
 function list(req, res, next) {
     let page = req.params.page ? req.params.page : 1;
     User.paginate({},{page:page, limit:3}).then(objs => res.status(200).json({
-        message: res.__('ok.usersList'),
+        message: res.__('users.list.ok'),
         obj: objs
     })).catch(ex => res.status(500).json({
-        message: res.__('bad.usersList'),
+        message: res.__('users.list.bad'),
         obj: ex
     }));
 }
@@ -20,10 +20,10 @@ function list(req, res, next) {
 function index(req, res, next) {
     const id= req.params.id;
     User.findOne({"_id":id}).then(obj => res.status(200).json({
-        message: res.__('ok.usersIndex'),
+        message: res.__('users.index.ok'),
         oj: obj
     })).catch(ex => res.status(500).json({
-        message: res.__('bad.usersIndex'),
+        message: res.__('users.index.bad'),
         obj: ex
     }));
 }

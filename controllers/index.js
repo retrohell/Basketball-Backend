@@ -8,10 +8,10 @@ const Menu = require('../models/index');
 function list(req, res, next) {
     let page = req.params.page ? req.params.page : 1;
     Menu.paginate({},{page:page, limit:3}).then(objs => res.status(200).json({
-        message: res.__('ok.menuList'),
+        message: res.__('ok'),
         obj: objs
     })).catch(ex => res.status(500).json({
-        message: res.__('bad.menuList'),
+        message: res.__('bad'),
         obj: ex
     }));
 }

@@ -1,4 +1,9 @@
 {
 	"bad.menuList": "bad.menuList",
-	"ok.menuList": "ok.menuList"
+	"ok.menuList": "Menu List",
+	"bad.menuReplace": "bad.menuReplace",
+	"ok.usersCreate": "ok.usersCreate",
+	"ok.usersList": "ok.usersList",
+	"users.list.ok": "users.list.ok",
+	"ok": "ok"
 }

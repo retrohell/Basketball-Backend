@@ -2,9 +2,6 @@ const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/index');
 
-router.get('/', function(req, res, next) {
-  res.send('List of skills: ');
-});
 
 /* GET stories listing. */
 router.get('/:page?', controller.list);

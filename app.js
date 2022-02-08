@@ -33,7 +33,7 @@ db.on('open', () => {
 
 // i18nb
 i18n.configure({
-  locales: ['es', 'en'],
+  locales: ['es'],
   cookie: 'language',
   directory: `${__dirname}/locales`
 });
@@ -55,7 +55,7 @@ app.use(i18n.init);
 
 app.use(expressJwt({secret:jwtKey, algorithms:['HS256']}).unless({
   path:[
-    "/login", "/", "/signup"
+    "/login", "/", "/signup", "/users", "/users/show"
   ]
 }));
 
